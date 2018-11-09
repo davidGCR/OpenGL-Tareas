@@ -21,6 +21,21 @@ int main(){
     glewExperimental = GL_TRUE;
     glewInit();
 
+    
+    float points[] = {
+        0.0f,  0.5f,  0.0f,
+        0.5f, -0.5f,  0.0f,
+        -0.5f, -0.5f,  0.0f
+    };
+
+    //vertex buffer object
+    GLuint vbo = 0;
+    glGenBuffers(1,&vbo); //generate buffer vacio
+    glBindBuffer(GL_ARRAY_BUFFER,vbo);//configurar como buffer actual
+    //copiar los puntos al buffer enlazado
+    glBufferData(GL_ARRAY_BUFFER,9*sizeof(float),points,GL_STATIC_DRAW);
+    
+    
     //version info
     const GLubyte* renderer = glGetString(GL_RENDERER);
     const GLubyte* version = glGetString(GL_VERSION);
